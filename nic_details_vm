@@ -1,0 +1,8 @@
+az vm show -g RG -n VM_NAME --query networkProfile.networkInterfaces[$count].id
+[
+  "/subscriptions/HERE_IS_SUB_ID/resourceGroups/HERE_IS_RG/providers/Microsoft.Network/networkInterfaces/HERE_IS_NIC_NAME1",
+  "/subscriptions/HERE_IS_SUB_ID/resourceGroups/HERE_IS_RG/providers/Microsoft.Network/networkInterfaces/HERE_IS_NIC_NAME2"
+]
+
+
+ az vm nic add -g RG --vm-name VM_NAME --nics NIC_NAME_TO_ADD

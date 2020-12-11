@@ -1,0 +1,7 @@
+#  you need to have public and private key handy . In below command paste public key
+# https://docs.microsoft.com/en-us/cli/azure/vm/extension?view=azure-cli-latest#az_vm_extension_set
+# https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux#:~:text=When%20you're%20using%20Azure,you%20must%20have%20'commandToExecute'.&text=Optionally%2C%20you%20can%20specify%20the,as%20a%20JSON%20formatted%20string.
+
+az vm extension set -n VMAccessForLinux --publisher Microsoft.OSTCExtensions --version 1.4 \
+    --vm-name MyVm --resource-group MyResourceGroup \
+    --protected-settings '{"username":"user1", "ssh_key":"ssh_rsa ..."}'

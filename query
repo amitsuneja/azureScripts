@@ -1,0 +1,35 @@
+az vm list-sizes --location eastus --query "[?name=='Standard_NV32as_v4'].{name:name, maxDataDiskCount:maxDataDiskCount, memoryInMb:memoryInMb, numberOfCores:numberOfCores, osDiskSizeInMb:osDiskSizeInMb, resourceDiskSizeInMb:resourceDiskSizeInMb}"
+
+
+az vm list --query "[?name=='REPOCLINET_APP01'].{name:name,id:id}"
+
+
+az vm list --query "[?contains(name, 'REPOCLINET_APP01')].{name:name,id:id}"
+
+
+az vm list --query "[?contains(name, 'REPOCLINET')].{name:name,id:id}"
+
+
+az vm list-ip-addresses -g RG -n VMNAME --query [].virtualMachine.network.privateIpAddresses[0]
+
+# az vm list -g PATCHTEST-RG --query [].[name]
+# az vm list -g PATCHTEST-RG --query [].[name][]
+# az vm list -g PATCHTEST-RG  --query [].[name,storageProfile.osDisk.name]
+# az vm list -g PATCHTEST-RG  --query [].[name,storageProfile.osDisk.name][]
+# To List Linux Server in RG
+# az vm list -g PATCHTEST-RG --query "[?storageProfile.osDisk.osType=='Linux'].{Name:name}"
+
+# To List Win Server in RG
+# az vm list -g PATCHTEST-RG --query "[?storageProfile.osDisk.osType=='Windows'].{Name:name}"
+[
+  {
+    "Name": "PatchTestSrv"
+  }
+]
+
+# az vm list -g PATCHTEST-RG --query "[?storageProfile.osDisk.osType=='Windows'].name"
+[
+  "PatchTestSrv"
+]
+
+#az rest --method get --url https://management.azure.com/subscriptions/SUBSCRIPTION_ID_HERE/providers/Microsoft.Network/publicIPAddresses?api-version=2020-05-01 --query "value|[*].properties.ipAddress"

@@ -1,0 +1,3 @@
+https://docs.microsoft.com/en-us/azure/developer/ansible/dynamic-inventory-configure?tabs=ansible
+https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
+https://docs.microsoft.com/en-us/cli/azure/resource?view=azure-cli-latest#az_resource_tag -->add i in your script to add inclremental tag.
