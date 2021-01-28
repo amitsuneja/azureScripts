@@ -33,3 +33,13 @@ az vm list-ip-addresses -g RG -n VMNAME --query [].virtualMachine.network.privat
 ]
 
 #az rest --method get --url https://management.azure.com/subscriptions/SUBSCRIPTION_ID_HERE/providers/Microsoft.Network/publicIPAddresses?api-version=2020-05-01 --query "value|[*].properties.ipAddress"
+
+
+
+TARGET TO DELETE ALL SNAPSHOT CONTAINING TEXT arnot-snap
+GOOD TO RUN FOR LOOP
+az snapshot list --query "[?contains(name, 'arnot-snap')]".id ---> GIVES ARRAY OF IDS.
+
+GOOD TO BUILD QUERY like this
+az snapshot list --query "[?contains(name, 'arnot-snap')]".{id:id} ---> Gives ARRAY containing json objects.
+az snapshot revoke-access --ids $(az snapshot list --query "[?contains(name, 'arnot-snap')]".{id:id})
