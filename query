@@ -43,3 +43,14 @@ az snapshot list --query "[?contains(name, 'arnot-snap')]".id ---> GIVES ARRAY O
 GOOD TO BUILD QUERY like this
 az snapshot list --query "[?contains(name, 'arnot-snap')]".{id:id} ---> Gives ARRAY containing json objects.
 az snapshot revoke-access --ids $(az snapshot list --query "[?contains(name, 'arnot-snap')]".{id:id})
+
+
+
+
+
+UNIX QUERY
+# grep -i "\.OUT" -> means show me all files which contain .out or .OUT 
+# awk mean print name of file 
+# tr means translate , -d for delete . Now delete .OUT or .out from filename output.
+ ls -ltr | grep -i  "\.OUT"|awk '{print $9}' | tr -d  "\.OUT,\.out"
+
