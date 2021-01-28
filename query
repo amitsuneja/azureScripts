@@ -52,5 +52,20 @@ UNIX QUERY
 # grep -i "\.OUT" -> means show me all files which contain .out or .OUT 
 # awk mean print name of file 
 # tr means translate , -d for delete . Now delete .OUT or .out from filename output.
- ls -ltr | grep -i  "\.OUT"|awk '{print $9}' | tr -d  "\.OUT,\.out"
+# now translate newline with "|"  . So i can use this and input to egrep command
 
+ls -ltr | grep -i  "\.OUT"|awk '{print $9}' | tr -d  "\.OUT,\.out"  | tr "\n" "|"
+BEFORE:
+-----
+-rw-r--r--. 1 root     root       118911 Jan 27 15:43 AGAZRUSEPBI40.OUT
+-rw-r--r--. 1 root     root       116345 Jan 27 16:24 AGAZRUSEPBI41.OUT
+-rw-r--r--. 1 root     root       177965 Jan 27 17:44 AGAZRUSEPBI51.OUT
+-rw-r--r--. 1 root     root       148017 Jan 27 18:35 AGAZRUSEPBI50.OUT
+-rw-r--r--. 1 root     root        52447 Jan 27 19:24 AGAZRUSEPBI60.OUT
+-rw-r--r--. 1 root     root       114066 Jan 27 19:59 AGAZRUSEPBI61.OUT
+-rw-r--r--. 1 root     root       116373 Jan 27 20:51 AGAZRUSEPBI70.out
+-rw-r--r--. 1 root     root       589733 Jan 27 22:21 AGAZRUSEPORA03.out
+-rw-r--r--. 1 root     root       847143 Jan 28 10:04 AGDC1PXINF01.OUT
+AFTER:
+----
+AGAZRSEPBI40|AGAZRSEPBI41|AGAZRSEPBI51|AGAZRSEPBI50|AGAZRSEPBI60|AGAZRSEPBI61|AGAZRSEPBI70|AGAZRSEPRA03|AGDC1PXINF01|[root
